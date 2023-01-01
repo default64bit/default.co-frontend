@@ -1,0 +1,156 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    scrollbar-color: theme("colors.zinc.600") theme("colors.zinc.800") !important;
+    scrollbar-width: thin !important;
+}
+
+*::-webkit-scrollbar { margin-inline-start: 0.25em; width: 10px; height: 10px; margin: auto 2px; border-radius: 2px; box-shadow: inset 0px 0px 5px rgba(0, 0, 0, 0.01); }
+*::-webkit-scrollbar-track { background-color: theme("colors.zinc.800"); border-radius: 2px; box-shadow: inset 0px 0px 5px rgba(0, 0, 0, 0.01); }
+/* *::-webkit-scrollbar-track-piece { background-color: theme("colors.zinc.800"); border-radius: 2px; } */
+*::-webkit-scrollbar-thumb { background: theme("colors.zinc.600"); border-radius: 2px; box-shadow: inset 0px 0px 5px rgba(0, 0, 0, 0.1); }
+
+@font-face { font-family: "Jost"; src: local('Jost-Medium'), url("../fonts/Jost/Jost-Medium.ttf"); font-display: swap; }
+@font-face { font-family: "JostRegular"; src: local('Jost-Regular'), url("../fonts/Jost/Jost-Regular.ttf"); font-display: swap; }
+@font-face { font-family: "JosefinSans"; src: local('JosefinSans-Regular'), url("../fonts/Josefin_Sans/JosefinSans-Regular.ttf"); font-display: swap; }
+@font-face { font-family: "MajorMonoDisplay"; src: url("../fonts/Major_Mono_Display/MajorMonoDisplay-Regular.ttf"); font-display: swap; }
+
+*,html {  scroll-behavior: smooth; }
+
+body {
+    font-family: "Jost", "Roboto";
+    display: flex; flex-direction: column;
+    margin: 0; padding: 0;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+.f-jost { font-family: "Jost" !important; }
+.f-jost-regular { font-family: "JostRegular" !important; }
+.f-josefin { font-family: "JosefinSans" !important; }
+.f-major { font-family: "MajorMonoDisplay" !important; }
+
+.mis-auto { margin-inline-start: auto; }
+.mie-auto { margin-inline-end: auto; }
+
+.inverse { mix-blend-mode: difference; }
+
+.z-1 { z-index: 1; }
+.z-2 { z-index: 2; }
+.z-3 { z-index: 3; }
+.z-4 { z-index: 4; }
+.z-5 { z-index: 5; }
+
+.dot-6 { border: 6px solid theme("colors.gray1"); }
+.dot-5 { border: 5px solid theme("colors.gray1"); }
+.dot-4 { border: 4px solid theme("colors.gray1"); }
+.dot-3 { border: 3px solid theme("colors.gray1"); }
+.dot-2 { border: 2px solid theme("colors.gray1"); }
+.dot-1 { border: 1px solid theme("colors.gray1"); }
+
+.bolb-green { background-color: theme("colors.green.400"); box-shadow: 0px 0px 10px theme("colors.green.400"); }
+.bolb-red { background-color: theme("colors.red.400"); box-shadow: 0px 0px 10px theme("colors.red.400"); }
+.bolb-yellow { background-color: theme("colors.yellow.400"); box-shadow: 0px 0px 10px theme("colors.yellow.400"); }
+.bolb-orange { background-color: theme("colors.orange.400"); box-shadow: 0px 0px 10px theme("colors.orange.400"); }
+
+.text-shadow-black { text-shadow: 1px 0px #000, 0px 1px #000, -1px 0px #000, 0px -1px #000; }
+.text-shadow-white { text-shadow: 1px 0px #fff, 0px 1px #fff, -1px 0px #fff, 0px -1px #fff; }
+
+/* .dark section[name="tech&tools"] {
+    background: linear-gradient(180deg, theme("colors.black2") 0%, theme("colors.black2") 100%);
+}
+section[name="tech&tools"] {
+    background: linear-gradient(180deg, theme("colors.stone.100") 0%, theme("colors.stone.100") 100%);
+} */
+
+.page-enter-from { opacity: 0; transform: translateY(-10px); }
+.page-enter-active, .page-leave-active { transition: all 0.2s; }
+.page-enter, .page-leave-to { opacity: 0; }
+
+.slide-up-enter-active { transition: all 0.2s ease; }
+.slide-up-leave-active { transition: all 0.2s ease; }
+.slide-up-enter-from, .slide-up-leave-to { transform: translateY(-100%); }
+
+.slide-left-enter-active { transition: all 0.2s ease; }
+.slide-left-leave-active { transition: all 0.2s ease; }
+.slide-left-enter-from, .slide-left-leave-to { transform: translateX(-100%); }
+
+.fade-enter-active { transition: all 0.2s ease; }
+.fade-leave-active { transition: all 0.2s ease; }
+.fade-enter-from, .fade-leave-to { opacity: 0; }
+
+/* ===================================================================== */
+
+@keyframes rotate {
+    100% { transform: rotate(-360deg); }
+}
+.loader { animation: rotate 1s infinite; }
+.rotate { animation: rotate 10s linear infinite; }
+.rotate-re { animation: rotate 10s linear infinite reverse; }
+
+@keyframes breathe {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.04); }
+    100% { transform: scale(1); }
+}
+.breathe { animation: breathe 2s ease-in-out infinite; }
+.breathe1 { animation: breathe 2s ease-in-out infinite; animation-delay: .2s; }
+.breathe2 { animation: breathe 2s ease-in-out infinite; animation-delay: .4s; }
+
+@keyframes in-N-out {
+    0% { opacity: 1; }
+    100% { opacity: 0; }
+}
+.in-N-out { animation: in-N-out 1s ease-in-out infinite; }
+
+@keyframes lamp-effect {
+    0%, 19.999%, 22%, 62.999%, 64%, 64.999%, 70%, 100% { opacity: 1; }
+	20%, 21.999%, 63%, 63.999%, 65%, 69.999% { opacity: 0.4; }
+}
+.lamp-effect { animation: lamp-effect 4s linear infinite; }
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(10%); }
+    100% { transform: translateY(0px); }
+}
+.float { animation: float 5s ease-out infinite; }
+
+.skeleton {
+    background: linear-gradient(90deg, #ffffff22 0%, #cccccc99 50%, #ffffff22 100%);
+    background-size: 200% 200%;
+    border-radius: 6px;
+    animation: shimmer_skeleton 2s infinite;
+}
+@keyframes shimmer_skeleton {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* ===================================================================== */
+
+.tox-notifications-container { display: none !important; }
+
+.ck-editor {
+    height: 100% !important; max-height: 100% !important;
+    overflow: auto !important;
+    /* border-radius: 0.75rem; */
+}
+.ck-editor div { border: none !important; box-shadow: none !important; }
+.ck-editor__main {
+    height: calc(100% - 2.5rem) !important; max-height: calc(100% - 2.5rem) !important;
+    overflow: auto !important;
+}
+.ck-content { height: 100% !important; }
+.ck-content ul,.ck-content ol {
+    list-style: revert;
+    margin: revert;
+    padding: revert;
+}
+.ck-content h1,.ck-content h2,.ck-content h3,.ck-content h4,.ck-content h5,.ck-content h6 {
+    font-size: revert;
+    font-weight: revert;
+}
