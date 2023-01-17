@@ -44,5 +44,5 @@ export default defineEventHandler(async (event) => {
     if (!!token) setCookie(event, "AuthToken", token, { sameSite: "strict", path: "/", httpOnly: true, secure: true, maxAge: maxAge });
 
     // return res.end(JSON.stringify({ token }));
-    return;
+    return token || 0;
 });
