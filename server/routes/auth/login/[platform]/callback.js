@@ -52,7 +52,7 @@ export default defineEventHandler(async (event) => {
         })
         .catch((error) => {
             if (typeof error.response === "undefined") console.error({ error });
-            console.error({ error: error.response.data });
+            else console.error({ error: error.response.data });
             redirectPath = "/login?error=1";
         });
 
