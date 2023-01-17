@@ -28,9 +28,10 @@ export default defineEventHandler(async (event) => {
     const token = await getAuthToken(req, {});
     if (!token) maxAge = 0;
 
-    console.log({ token, maxAge });
-
     setCookie(event, "AuthToken", token, { sameSite: "strict", path: "/", httpOnly: true, secure: true, maxAge: maxAge });
 
-    return res.end();
+    // return res.end();
+
+    console.log({ token, maxAge });
+    return res.end(JSON.stringify({ token, maxAge }));
 });
