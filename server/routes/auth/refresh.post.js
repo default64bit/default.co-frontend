@@ -14,7 +14,6 @@ const getAuthToken = async (req, data) => {
         )
         .then((response) => response.data.token)
         .catch((error) => {
-            console.log(error);
             if (typeof error.response === "undefined") console.error({ error });
             console.error({ error: error.response.data });
         });
@@ -28,6 +27,8 @@ export default defineEventHandler(async (event) => {
     // request the back-end and set new auth-token
     const token = await getAuthToken(req, {});
     if (!token) maxAge = 0;
+
+    console.log({ token, maxAge });
 
     setCookie(event, "AuthToken", token, { sameSite: "strict", path: "/", httpOnly: true, secure: true, maxAge: maxAge });
 
