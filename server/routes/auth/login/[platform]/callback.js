@@ -10,6 +10,10 @@ const oauth2Client = new google.auth.OAuth2(
 
 const getAuthToken = async (req, data) => {
     const ip = req.headers["x-forwarded-for"] || req.socket.remoteAddress || null;
+
+    delete req.headers["content-length"];
+    delete req.headers["host"];
+
     const token = await axios
         .post(
             `${process.env.API_BASE_URL}/auth/continue-with-google`,
