@@ -12,6 +12,9 @@ export default defineEventHandler(async (event) => {
     const token = getCookie(event, "AuthToken");
     if (!token) return await sendRedirect(event, "/login");
 
+    delete req.headers["content-length"];
+    delete req.headers["host"];
+
     // if token exist check if its valid or not
     const isTokenValid = await axios
         .get(`${process.env.API_BASE_URL}/admin/check`, {
