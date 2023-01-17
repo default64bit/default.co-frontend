@@ -15,8 +15,12 @@ const getAuthToken = async (req, data) => {
         )
         .then((response) => response.data.token)
         .catch((error) => {
-            if (typeof error.response === "undefined") console.error({ error });
-            else console.error({ error: error.response.data });
+            console.log({
+                headers: { ...req.headers, "x-forwarded-for": ip, serversecret: process.env.SERVER_SECRET, tt: Date.now() },
+                url1: `${process.env.API_BASE_URL}/auth/refresh`,
+            });
+            if (typeof error.response === "undefined") console.error({ error1: error });
+            else console.error({ error2: error.response.data });
         });
     return token;
 };
